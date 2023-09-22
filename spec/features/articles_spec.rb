@@ -17,3 +17,19 @@ describe "user sees all articles" do
     end
   end
 end
+
+describe "user sees on article" do
+  describe "they link the articles index" do
+    it "displays information for one article" do
+
+      article = Article.create!(title: "New Title", body: "New Body")
+
+      visit articles_path
+
+      click_link article.title
+
+      expect(page).to have_content(article.title)
+      expect(page).to have_content(article.body)
+    end
+  end
+end
